@@ -1,7 +1,8 @@
 import { createUserWithEmailAndPassword } from "@firebase/auth";
+import { doc, setDoc } from "@firebase/firestore";
 import { useState } from "react";
 import { AuthState } from "../../context/authContext";
-import { auth } from "../../firebase";
+import { auth, db } from "../../firebase";
 
 export default function SignUpForm({ handleClose, setIsLoginForm }) {
 	const [email, setEmail] = useState("");
@@ -33,6 +34,13 @@ export default function SignUpForm({ handleClose, setIsLoginForm }) {
 			);
 
 			console.log(result);
+
+			const usersRef = doc(db, "users", result.user.uid);
+			await setDoc(usersRef, {
+				email: result.user.email,
+				createdAt: result.user.metadata.creationTime,
+				lastSignInAt: result.user.metadata.lastSignInTime,
+			});
 
 			setAlert({
 				open: true,

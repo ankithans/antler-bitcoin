@@ -1,5 +1,6 @@
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { auth } from "../../firebase";
+import { doc, setDoc } from "@firebase/firestore";
+import { auth, db } from "../../firebase";
 import { AuthState } from "../../context/authContext";
 
 export default function GoogleLoginButton({ handleClose }) {
@@ -9,6 +10,14 @@ export default function GoogleLoginButton({ handleClose }) {
 	const handleSubmit = async () => {
 		try {
 			const result = await signInWithPopup(auth, googleProvider);
+
+			const usersRef = doc(db, "users", result.user.uid);
+			await setDoc(usersRef, {
+				email: result.user.email,
+				createdAt: result.user.metadata.creationTime,
+				lastSignInAt: result.user.metadata.lastSignInTime,
+			});
+
 			setAlert({
 				open: true,
 				message: `Sign In Successfull. Welcome ${result.user.email}`,
