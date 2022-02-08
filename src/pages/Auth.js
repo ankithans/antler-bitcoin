@@ -1,19 +1,12 @@
-import { Grid, Button, Modal, Typography, Box } from "@mui/material";
-import { useState } from "react";
+import { Grid, Modal, Box } from "@mui/material";
 import HalfBackground from "../assets/images/patternImg.0edf5760.svg";
 import GoogleButton from "react-google-button";
 import GoogleLoginButton from "../components/auth/GoogleLoginButton";
 import LoginForm from "../components/auth/LoginForm";
 
-export default function Auth() {
-	const [open, setOpen] = useState(false);
-	const handleOpen = () => setOpen(true);
-	const handleClose = () => setOpen(false);
-
+export default function Auth({ open, handleClose }) {
 	return (
-		// <Grid container component="main" sx={{ height: "100vh" }}>
 		<div>
-			<Button onClick={handleOpen}>Open modal</Button>
 			<Modal
 				open={open}
 				onClose={handleClose}
