@@ -7,12 +7,21 @@ const AuthContext = ({ children }) => {
 
 	const [user, setUser] = useState(null);
 	const [loading, setLoading] = useState(false);
+	const [alert, setAlert] = useState({
+		open: false,
+		message: "",
+		type: "success",
+	});
 
 	return (
 		<Auth.Provider
 			value={{
 				user,
+				setUser,
 				loading,
+				setLoading,
+				alert,
+				setAlert,
 			}}
 		>
 			{children}

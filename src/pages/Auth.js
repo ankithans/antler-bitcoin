@@ -28,9 +28,11 @@ export default function Auth({ open, handleClose }) {
 									<div className="text-gray-600 font-bold text-4xl">
 										Welcome to Antler Bitcoin
 									</div>
-									<GoogleLoginButton />
+									<GoogleLoginButton
+										handleClose={handleClose}
+									/>
 								</div>
-								<LoginForm />
+								<LoginForm handleClose={handleClose} />
 							</div>
 						</Grid>
 					</Grid>

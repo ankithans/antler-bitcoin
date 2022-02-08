@@ -1,10 +1,17 @@
-import React from "react";
+import { useState } from "react";
 
-export default function GoogleLoginButton() {
+export default function GoogleLoginButton({ handleClose }) {
+	const [email, setEmail] = useState("");
+
+	const handleSubmit = () => {
+		handleClose();
+	};
+
 	return (
 		<div>
 			<button
 				type="button"
+				onClick={handleSubmit}
 				className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
 			>
 				<svg
