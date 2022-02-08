@@ -1,10 +1,29 @@
-import { useState } from "react";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { auth } from "../../firebase";
+import { AuthState } from "../../context/authContext";
 
 export default function GoogleLoginButton({ handleClose }) {
-	const [email, setEmail] = useState("");
+	const { setAlert } = AuthState();
+	const googleProvider = new GoogleAuthProvider();
 
-	const handleSubmit = () => {
-		handleClose();
+	const handleSubmit = async () => {
+		try {
+			const result = await signInWithPopup(auth, googleProvider);
+			setAlert({
+				open: true,
+				message: `Sign In Successfull. Welcome ${result.user.email}`,
+				type: "success",
+			});
+
+			handleClose();
+		} catch (error) {
+			setAlert({
+				open: true,
+				message: error.message,
+				type: "error",
+			});
+			return;
+		}
 	};
 
 	return (
