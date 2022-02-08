@@ -1,8 +1,7 @@
 import { Grid, Modal, Box } from "@mui/material";
 import HalfBackground from "../assets/images/patternImg.0edf5760.svg";
-import GoogleButton from "react-google-button";
 import GoogleLoginButton from "../components/auth/GoogleLoginButton";
-import LoginForm from "../components/auth/LoginForm";
+import AuthForm from "../components/auth/AuthForm";
 
 export default function Auth({ open, handleClose }) {
 	return (
@@ -18,7 +17,7 @@ export default function Auth({ open, handleClose }) {
 						<Grid item xs={2} md={4} className="">
 							<img
 								src={HalfBackground}
-								className="object-cover  h-full rounded-t-lg  md:rounded-none md:rounded-l-md"
+								className="object-cover h-full rounded-t-lg md:rounded-none md:rounded-l-md"
 							/>
 							{/* <div className="bg-blue-300 w-60"></div> */}
 						</Grid>
@@ -32,7 +31,7 @@ export default function Auth({ open, handleClose }) {
 										handleClose={handleClose}
 									/>
 								</div>
-								<LoginForm handleClose={handleClose} />
+								<AuthForm handleClose={handleClose} />
 							</div>
 						</Grid>
 					</Grid>
