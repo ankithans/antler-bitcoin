@@ -1,9 +1,8 @@
 import { Snackbar, Alert } from "@mui/material";
-import { useState } from "react";
-import { CryptoState } from "../../context/authContext";
+import { AuthState } from "../../context/authContext";
 
 export default function CustomAlert() {
-	const { alert, setAlert } = CryptoState();
+	const { alert, setAlert } = AuthState();
 
 	const handleClose = (event, reason) => {
 		if (reason === "clickaway") return;

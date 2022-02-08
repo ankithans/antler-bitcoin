@@ -1,36 +1,62 @@
-import React from "react";
+import { createUserWithEmailAndPassword } from "@firebase/auth";
 import { useState } from "react";
-import { CryptoState } from "../../context/authContext";
+import { AuthState } from "../../context/authContext";
+import { auth } from "../../firebase";
 
 export default function SignUpForm({ handleClose, setIsLoginForm }) {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
 
-	const { setAlert } = CryptoState();
+	const { setAlert } = AuthState();
 
-	const handleSubmit = () => {
-		if (password != confirmPassword) {
+	const handleSubmit = async (event) => {
+		event.preventDefault();
+
+		if (email === "" || password === "" || confirmPassword === "") {
+			return;
+		}
+		if (password !== confirmPassword) {
 			setAlert({
 				open: true,
-				message: "email or password is incorrect",
+				message: "please re-confirm the password",
 				type: "error",
 			});
 			return;
 		}
 
 		try {
-		} catch (error) {}
+			const result = await createUserWithEmailAndPassword(
+				auth,
+				email,
+				password
+			);
 
-		// handleClose();
+			console.log(result);
+
+			setAlert({
+				open: true,
+				message: `Sign Up Successfull. Welcome ${result.user.email}`,
+				type: "success",
+			});
+
+			handleClose();
+		} catch (error) {
+			setAlert({
+				open: true,
+				message: error.message,
+				type: "error",
+			});
+			return;
+		}
 	};
 
 	return (
 		<div>
-			<form className="space-y-4" action="#">
+			<form className="space-y-4" onSubmit={handleSubmit}>
 				<div>
 					<label
-						for="email"
+						htmlFor="email"
 						className="block mb-2 text-sm font-medium text-gray-600"
 					>
 						Your email
@@ -48,7 +74,7 @@ export default function SignUpForm({ handleClose, setIsLoginForm }) {
 				</div>
 				<div>
 					<label
-						for="password"
+						htmlFor="password"
 						className="block mb-2 text-sm font-medium text-gray-600"
 					>
 						Set password
@@ -67,7 +93,7 @@ export default function SignUpForm({ handleClose, setIsLoginForm }) {
 
 				<div>
 					<label
-						for="password"
+						htmlFor="password"
 						className="block mb-2 text-sm font-medium text-gray-600"
 					>
 						Confirm password

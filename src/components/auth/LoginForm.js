@@ -1,33 +1,54 @@
+import { signInWithEmailAndPassword } from "firebase/auth";
 import React from "react";
 import { useState } from "react";
-import { CryptoState } from "../../context/authContext";
+import { AuthState } from "../../context/authContext";
+import { auth } from "../../firebase";
 
 export default function LoginForm({ setIsLoginForm, handleClose }) {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 
-	const { setAlert } = CryptoState();
+	const { setAlert } = AuthState();
 
-	const handleSubmit = () => {
+	const handleSubmit = async (event) => {
+		event.preventDefault();
+
+		if (email === "" || password === "") {
+			return;
+		}
+
 		try {
-		} catch (error) {}
+			const result = await signInWithEmailAndPassword(
+				auth,
+				email,
+				password
+			);
 
-		setAlert({
-			open: true,
-			message: "email or password is incorrect",
-			type: "error",
-		});
+			console.log(result);
 
-		return;
-		// handleClose();
+			setAlert({
+				open: true,
+				message: `Sign In Successfull. Welcome ${result.user.email}`,
+				type: "success",
+			});
+
+			handleClose();
+		} catch (error) {
+			setAlert({
+				open: true,
+				message: error.message,
+				type: "error",
+			});
+			return;
+		}
 	};
 
 	return (
 		<div>
-			<form className="space-y-4">
+			<form className="space-y-4" onSubmit={handleSubmit}>
 				<div>
 					<label
-						for="email"
+						htmlFor="email"
 						className="block mb-2 text-sm font-medium text-gray-600"
 					>
 						Your email
@@ -45,7 +66,7 @@ export default function LoginForm({ setIsLoginForm, handleClose }) {
 				</div>
 				<div>
 					<label
-						for="password"
+						htmlFor="password"
 						className="block mb-2 text-sm font-medium text-gray-600"
 					>
 						Your password

@@ -8,13 +8,13 @@ export default function AuthForm({ handleClose }) {
 
 	return (
 		<div>
-			{isLoginForm == true && (
+			{isLoginForm && (
 				<LoginForm
 					setIsLoginForm={setIsLoginForm}
 					handleClose={handleClose}
 				/>
 			)}
-			{isLoginForm == false && (
+			{!isLoginForm && (
 				<SignUpForm
 					setIsLoginForm={setIsLoginForm}
 					handleClose={handleClose}

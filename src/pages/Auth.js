@@ -17,6 +17,7 @@ export default function Auth({ open, handleClose }) {
 						<Grid item xs={2} md={4} className="">
 							<img
 								src={HalfBackground}
+								alt="Half Background"
 								className="object-cover h-full rounded-t-lg md:rounded-none md:rounded-l-md"
 							/>
 							{/* <div className="bg-blue-300 w-60"></div> */}
