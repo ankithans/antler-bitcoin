@@ -6,7 +6,13 @@ import { AuthState } from "../../context/authContext";
 import CustomLineChart from "./CustomLineChart";
 
 export default function BitcoinChart() {
-	const [historicalData, setHistoricalData] = useState([]);
+	const [historicalData, setHistoricalData] = useState([
+		{
+			id: 1,
+			inr: 1,
+			usd: 1,
+		},
+	]);
 	const { setAlert } = AuthState();
 	const [loading, setLoading] = useState(false);
 
@@ -51,15 +57,25 @@ export default function BitcoinChart() {
 						<div className="flex w-full m-3 sm:m-0 md:w-1/2 p-10 bg-gray-100 text-gray-600 rounded-md items-center">
 							<div className="w-full">
 								<h3 className="text-lg font-semibold leading-tight text-gray-800">
-									Bitcoin Price
+									Bitcoin Price in INR
 								</h3>
-								<h6 className="text-sm leading-tight mb-2">
-									<span>Bitcoin price in INR</span>
-									&nbsp;&nbsp;-&nbsp;&nbsp;Aug 2nd 4:10pm AEST
+								<h6 className="text-sm leading-tight mb-2 mt-1">
+									<span>Last updated </span>
+									&nbsp;&nbsp;-&nbsp;&nbsp;
+									{
+										historicalData[
+											historicalData.length - 1
+										].id
+									}
 								</h6>
 								<div className="flex w-full items-end mb-6">
 									<span className="block leading-none text-3xl text-gray-800">
-										{466522}
+										₹
+										{numberWithCommas(
+											historicalData[
+												historicalData.length - 1
+											].inr
+										)}
 									</span>
 								</div>
 							</div>
@@ -67,15 +83,25 @@ export default function BitcoinChart() {
 						<div className="flex w-full m-3 sm:m-0 md:w-1/2 p-10 bg-gray-100 text-gray-600 rounded-md items-center">
 							<div className="w-full">
 								<h3 className="text-lg font-semibold leading-tight text-gray-800">
-									Bitcoin Price
+									Bitcoin Price in USD
 								</h3>
-								<h6 className="text-sm leading-tight mb-2">
-									<span>Bitcoin price in INR</span>
-									&nbsp;&nbsp;-&nbsp;&nbsp;Aug 2nd 4:10pm AEST
+								<h6 className="text-sm leading-tight mb-2 mt-1">
+									<span>Last updated </span>
+									&nbsp;&nbsp;-&nbsp;&nbsp;
+									{
+										historicalData[
+											historicalData.length - 1
+										].id
+									}
 								</h6>
 								<div className="flex w-full items-end mb-6">
 									<span className="block leading-none text-3xl text-gray-800">
-										{466522}
+										$
+										{numberWithCommas(
+											historicalData[
+												historicalData.length - 1
+											].usd
+										)}
 									</span>
 								</div>
 							</div>
@@ -104,4 +130,8 @@ export default function BitcoinChart() {
 			)}
 		</div>
 	);
+}
+
+function numberWithCommas(x) {
+	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
