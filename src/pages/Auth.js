@@ -12,15 +12,14 @@ export default function Auth({ open, handleClose }) {
 				aria-labelledby="modal-modal-title"
 				aria-describedby="modal-modal-description"
 			>
-				<Box className="rounded-md absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-auto bg-white">
+				<Box className="rounded-md absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-auto bg-gray-100">
 					<Grid container className="rounded-md">
 						<Grid item xs={2} md={4} className="">
 							<img
-								src={HalfBackground}
+								src="https://images.unsplash.com/photo-1536566482680-fca31930a0bd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80"
 								alt="Half Background"
 								className="object-cover h-full rounded-t-lg md:rounded-none md:rounded-l-md"
 							/>
-							{/* <div className="bg-blue-300 w-60"></div> */}
 						</Grid>
 						<Grid item xs={10} md={8} className="flex p-10">
 							<div className="m-auto w-80">
