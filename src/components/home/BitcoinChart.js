@@ -44,62 +44,29 @@ export default function BitcoinChart() {
 	}, []);
 
 	return (
-		<div className="flex">
-			{/* <div></div> */}
-			{/* <div> */}
+		<div className="">
 			{!loading && (
-				<div className="w-1/2">
-					<CustomLineChart
-						title="Bitcoin Price in INR"
-						labels={historicalData.map((item) => item.id)}
-						datasets={[
-							{
-								data: historicalData.map((item) => item.inr),
-								label: "INR",
-								borderColor: "#7494EA",
-							},
-						]}
-					/>
-				</div>
-			)}
-
-			{!loading && (
-				<div className="w-1/2">
+				<div className="">
 					<CustomLineChart
 						title="Bitcoin Price in USD"
-						labels={historicalData.map((item) => item.id)}
+						labels={historicalData.map((item) => {
+							var d = new Date(Date.parse(item.id));
+							return `${d.toString().substring(4, 21)}`;
+						})}
 						datasets={[
 							{
 								data: historicalData.map((item) => item.usd),
 								label: "USD",
-								borderColor: "#35FF69",
+								backgroundColor: "rgba(255, 255, 255, 0.1)",
+								borderColor: "rgba(255, 255, 255, 1)",
+								pointBackgroundColor: "rgba(255, 255, 255, 1)",
+								fill: "start",
+								tension: 0.4,
 							},
 						]}
 					/>
 				</div>
 			)}
-
-			{!loading && (
-				<div className="w-1/2">
-					<CustomLineChart
-						title="Bitcoin Price INR vs USD"
-						labels={historicalData.map((item) => item.id)}
-						datasets={[
-							{
-								data: historicalData.map((item) => item.inr),
-								label: "INR",
-								borderColor: "#7494EA",
-							},
-							{
-								data: historicalData.map((item) => item.usd),
-								label: "USD",
-								borderColor: "#35FF69",
-							},
-						]}
-					/>
-				</div>
-			)}
-			{/* </div> */}
 		</div>
 	);
 }
