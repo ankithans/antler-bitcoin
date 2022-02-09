@@ -46,7 +46,7 @@ export default function BitcoinChart() {
 	return (
 		<div>
 			{!loading && (
-				<div className="flex flex-col mt-10 items-center">
+				<div className="flex flex-col mt-0 sm:mt-9 items-center">
 					<div className="flex flex-col sm:flex-row  w-full md:px-0 md:w-2/3 xl:w-1/2 pb-4 pt-8 items-center bg-white sm:space-x-5">
 						<div className="flex w-full m-3 sm:m-0 md:w-1/2 p-10 bg-gray-100 text-gray-600 rounded-md items-center">
 							<div className="w-full">
