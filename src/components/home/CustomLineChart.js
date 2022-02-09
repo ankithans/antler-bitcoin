@@ -40,7 +40,7 @@ const options = {
 
 export default function CustomLineChart({ datasets, labels, title }) {
 	return (
-		<div className="flex w-full md:w-1/2 px-5 pb-4 pt-8 bg-gray-700 text-white items-center m-10 rounded-md">
+		<div className="md:w-2/3 xl:w-1/2 px-5 pb-4 pt-8 bg-gray-700 text-white items-center rounded-md">
 			<Line
 				data={{
 					labels: labels,
