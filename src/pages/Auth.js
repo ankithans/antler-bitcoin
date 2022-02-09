@@ -1,5 +1,4 @@
 import { Grid, Modal, Box } from "@mui/material";
-import HalfBackground from "../assets/images/patternImg.0edf5760.svg";
 import GoogleLoginButton from "../components/auth/GoogleLoginButton";
 import AuthForm from "../components/auth/AuthForm";
 

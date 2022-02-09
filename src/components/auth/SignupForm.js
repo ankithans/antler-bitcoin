@@ -42,13 +42,13 @@ export default function SignUpForm({ handleClose, setIsLoginForm }) {
 				lastSignInAt: result.user.metadata.lastSignInTime,
 			});
 
+			handleClose();
+
 			setAlert({
 				open: true,
 				message: `Sign Up Successfull. Welcome ${result.user.email}`,
 				type: "success",
 			});
-
-			handleClose();
 		} catch (error) {
 			setAlert({
 				open: true,

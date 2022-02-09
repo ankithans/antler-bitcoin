@@ -18,13 +18,13 @@ export default function GoogleLoginButton({ handleClose }) {
 				lastSignInAt: result.user.metadata.lastSignInTime,
 			});
 
+			handleClose();
+
 			setAlert({
 				open: true,
 				message: `Sign In Successfull. Welcome ${result.user.email}`,
 				type: "success",
 			});
-
-			handleClose();
 		} catch (error) {
 			setAlert({
 				open: true,

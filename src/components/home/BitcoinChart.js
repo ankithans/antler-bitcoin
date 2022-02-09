@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { doc, getDocs, collection } from "@firebase/firestore";
+import { getDocs, collection } from "@firebase/firestore";
 import { db } from "../../firebase";
 import { AuthState } from "../../context/authContext";
 import CustomLineChart from "./CustomLineChart";
