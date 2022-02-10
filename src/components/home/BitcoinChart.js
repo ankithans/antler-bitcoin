@@ -33,7 +33,6 @@ export default function BitcoinChart() {
 				message: "historical data loaded",
 				type: "success",
 			});
-			setLoading(false);
 		} catch (error) {
 			setAlert({
 				open: true,
@@ -46,6 +45,7 @@ export default function BitcoinChart() {
 
 	useEffect(() => {
 		fetchHistoricalData();
+		setLoading(false);
 		console.log(historicalData);
 	}, []);
 
