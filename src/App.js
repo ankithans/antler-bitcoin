@@ -19,7 +19,8 @@ export default function App() {
 		<div className="flex flex-col h-screen justify-between">
 			<div>
 				<Navbar />
-				{localStorage.getItem("loggedIn") === "false" ? (
+				{localStorage.getItem("loggedIn") === "false" ||
+				localStorage.getItem("loggedIn") == null ? (
 					<Landing />
 				) : (
 					<Dashboard />
