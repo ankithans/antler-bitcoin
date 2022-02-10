@@ -133,9 +133,9 @@ export default function BitcoinChart() {
 								borderColor: "rgba(255, 255, 255, 1)",
 								pointBackgroundColor: "rgba(255, 255, 255, 1)",
 								fill: "start",
-								tension: 0.4,
-								pointRadius: 1,
-								borderWidth: 3,
+								tension: 0.5,
+								pointRadius: 0.6,
+								borderWidth: 2.5,
 							},
 						]}
 					/>
