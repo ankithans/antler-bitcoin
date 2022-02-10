@@ -8,7 +8,7 @@ export default function Landing() {
 		<div className="  text-center justify-center">
 			<section className="relative">
 				<div
-					className="absolute left-1/2 transform -translate-x-1/2 translate-y-28 bottom-0 pointer-events-none"
+					className="absolute sm:left-1/2 transform -translate-x-1/2 hidden xl:block sm:translate-y-28 bottom-0 pointer-events-none"
 					aria-hidden="true"
 				>
 					<svg
@@ -89,7 +89,7 @@ export default function Landing() {
 							>
 								<div className="flex flex-col justify-center">
 									<svg
-										className="absolute inset-0 max-w-full mx-auto md:max-w-none h-auto"
+										className="absolute hidden sm:block inset-0 max-w-full mx-auto md:max-w-none h-auto"
 										width="768"
 										height="432"
 										viewBox="0 0 768 432"
