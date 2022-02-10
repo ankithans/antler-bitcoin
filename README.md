@@ -1,7 +1,5 @@
 # Antler Bitcoin
 
-> Work In Progress
-
 ## Tasks
 
 1. ~Landing Page with a Navbar with a signUp / SignIn menu~
