@@ -23,7 +23,7 @@ export default function BitcoinChart() {
 
 			var newHistoricalData = response.docs.map((item) => ({
 				...item.data(),
-				id: item.id,
+				id: new Date(Date.parse(item.id)).toUTCString(),
 			}));
 
 			setHistoricalData(newHistoricalData);
@@ -65,7 +65,7 @@ export default function BitcoinChart() {
 									Bitcoin Price in INR
 								</h3>
 								<h6 className="text-sm leading-tight mb-2 mt-1">
-									<span>Last updated </span>
+									<span>Last updated</span>
 									&nbsp;&nbsp;-&nbsp;&nbsp;
 									{
 										historicalData[
@@ -94,7 +94,7 @@ export default function BitcoinChart() {
 									Bitcoin Price in USD
 								</h3>
 								<h6 className="text-sm leading-tight mb-2 mt-1">
-									<span>Last updated </span>
+									<span>Last updated</span>
 									&nbsp;&nbsp;-&nbsp;&nbsp;
 									{
 										historicalData[
@@ -143,8 +143,4 @@ export default function BitcoinChart() {
 			)}
 		</div>
 	);
-}
-
-function numberWithCommas(x) {
-	return parseInt(x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
 }

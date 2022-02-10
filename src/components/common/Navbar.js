@@ -37,6 +37,7 @@ export default function Navbar() {
 				<div className="container flex flex-wrap justify-between items-center mx-auto">
 					<button className="flex">
 						<img
+							alt="logo"
 							className="pr-3 h-10 mb-1"
 							src="https://img.icons8.com/color/80/000000/baratheon-house.png"
 						/>
@@ -45,7 +46,7 @@ export default function Navbar() {
 						</span>
 					</button>
 					<div className="flex md:order-2">
-						{localStorage.getItem("loggedIn") == "true" ? (
+						{localStorage.getItem("loggedIn") === "true" ? (
 							<button
 								type="button"
 								onClick={handleLogout}
