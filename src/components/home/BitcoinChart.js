@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import CountUp from "react-countup";
 import { getDocs, collection } from "@firebase/firestore";
 import { db } from "../../firebase";
 import { AuthState } from "../../context/authContext";
@@ -76,11 +76,14 @@ export default function BitcoinChart() {
 								<div className="flex w-full items-end mb-6">
 									<span className="block leading-none text-3xl text-gray-800">
 										₹
-										{numberWithCommas(
-											historicalData[
-												historicalData.length - 1
-											].inr
-										)}
+										<CountUp
+											separator=","
+											end={
+												historicalData[
+													historicalData.length - 1
+												].inr
+											}
+										/>
 									</span>
 								</div>
 							</div>
@@ -102,11 +105,14 @@ export default function BitcoinChart() {
 								<div className="flex w-full items-end mb-6">
 									<span className="block leading-none text-3xl text-gray-800">
 										$
-										{numberWithCommas(
-											historicalData[
-												historicalData.length - 1
-											].usd
-										)}
+										<CountUp
+											separator=","
+											end={
+												historicalData[
+													historicalData.length - 1
+												].usd
+											}
+										/>
 									</span>
 								</div>
 							</div>
@@ -140,5 +146,5 @@ export default function BitcoinChart() {
 }
 
 function numberWithCommas(x) {
-	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	return parseInt(x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
 }
