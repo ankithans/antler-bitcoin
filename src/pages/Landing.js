@@ -8,7 +8,7 @@ export default function Landing() {
 		<div className="  text-center justify-center">
 			<section className="relative">
 				<div
-					className="absolute sm:left-1/2 transform -translate-x-1/2 hidden xl:block sm:translate-y-28 bottom-0 pointer-events-none"
+					className="absolute sm:left-1/2 transform -translate-x-1/2 hidden xl:block sm:translate-y-32  bottom-0 pointer-events-none"
 					aria-hidden="true"
 				>
 					<svg
@@ -39,9 +39,9 @@ export default function Landing() {
 
 				<div className="max-w-6xl mx-auto px-4 sm:px-6">
 					{/* Hero content */}
-					<div className="pt-32 pb-12 md:pt-40 md:pb-20">
+					<div className="pt-32 pb-12 md:pt-42 md:pb-24">
 						{/* Section header */}
-						<div className="text-center pb-12 md:pb-16">
+						<div className="text-center ">
 							<h1
 								className="text-5xl md:text-6xl font-extrabold leading-tighter tracking-tighter mb-4"
 								data-aos="zoom-y-out"
@@ -68,12 +68,12 @@ export default function Landing() {
 									data-aos-delay="300"
 								>
 									<div>
-										<button className="px-3 py-1 rounded-3xl text-white bg-blue-600 hover:bg-blue-700 w-full mb-4 sm:w-auto sm:mb-0">
+										<button className="px-5 py-2 rounded-3xl text-white bg-blue-600 hover:bg-blue-700 w-full mb-4 sm:w-auto sm:mb-0">
 											Start free trial
 										</button>
 									</div>
 									<div>
-										<button className="px-3 py-1 rounded-3xl text-white bg-gray-900 hover:bg-gray-800 w-full sm:w-auto sm:ml-4">
+										<button className="px-5 py-2 rounded-3xl text-white bg-gray-900 hover:bg-gray-800 w-full sm:w-auto sm:ml-4">
 											Learn more
 										</button>
 									</div>
@@ -83,13 +83,13 @@ export default function Landing() {
 
 						<div>
 							<div
-								className="relative flex justify-center mb-8"
+								className="relative flex justify-center mb-8 pb-16"
 								data-aos="zoom-y-out"
 								data-aos-delay="450"
 							>
-								<div className="flex flex-col justify-center">
+								<div className="flex flex-col justify-center ">
 									<svg
-										className="absolute hidden sm:block inset-0 max-w-full mx-auto md:max-w-none h-auto"
+										className="absolute mt-10 hidden sm:block inset-auto max-w-full mx-auto md:max-w-none h-auto"
 										width="768"
 										height="432"
 										viewBox="0 0 768 432"
@@ -195,7 +195,7 @@ export default function Landing() {
 									</svg>
 								</div>
 								<button
-									className="absolute top-full flex items-center transform -translate-y-1/2 bg-white rounded-full font-medium group p-4 shadow-lg"
+									className="absolute mt-7 top-full flex items-center transform -translate-y-1/2 bg-white rounded-full font-medium group p-4  shadow-lg"
 									onClick={(e) => {
 										e.preventDefault();
 										e.stopPropagation();

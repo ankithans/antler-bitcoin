@@ -15,7 +15,7 @@ export default function Auth({ open, handleClose }) {
 					<Grid container className="rounded-md">
 						<Grid item xs={2} md={4} className="">
 							<img
-								src="https://images.unsplash.com/photo-1566305977571-5666677c6e98?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=945&q=80"
+								src="https://images.unsplash.com/photo-1566305977571-5666677c6e98?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=945&h=500&q=80"
 								alt="Half Background"
 								className="opacity-50 object-cover h-full max-h-min rounded-t-lg md:rounded-none md:rounded-l-md"
 							/>
