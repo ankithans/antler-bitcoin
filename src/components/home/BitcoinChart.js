@@ -4,6 +4,7 @@ import { getDocs, collection } from "@firebase/firestore";
 import { db } from "../../firebase";
 import { AuthState } from "../../context/authContext";
 import CustomLineChart from "./CustomLineChart";
+import { CircularProgress } from "@mui/material";
 
 export default function BitcoinChart() {
 	const [historicalData, setHistoricalData] = useState([
@@ -14,11 +15,10 @@ export default function BitcoinChart() {
 		},
 	]);
 	const { setAlert } = AuthState();
-	const [loading, setLoading] = useState(false);
+	const [loading, setLoading] = useState(true);
 
 	const fetchHistoricalData = async () => {
 		try {
-			setLoading(true);
 			const response = await getDocs(collection(db, "bitcoin"));
 
 			var newHistoricalData = response.docs.map((item) => ({
@@ -33,6 +33,7 @@ export default function BitcoinChart() {
 				message: "historical data loaded",
 				type: "success",
 			});
+			setLoading(false);
 		} catch (error) {
 			setAlert({
 				open: true,
@@ -44,14 +45,18 @@ export default function BitcoinChart() {
 	};
 
 	useEffect(() => {
+		setLoading(true);
+
 		fetchHistoricalData();
-		setLoading(false);
-		console.log(historicalData);
 	}, []);
 
 	return (
 		<div>
-			{!loading && (
+			{loading ? (
+				<div className="flex  mt-80 justify-center items-center">
+					<CircularProgress />
+				</div>
+			) : (
 				<div className="flex flex-col mt-0 sm:mt-9 items-center">
 					<div className="flex flex-col sm:flex-row  w-full md:px-0 md:w-2/3 xl:w-1/2 pb-4 pt-8 items-center bg-white sm:space-x-5">
 						<div className="flex w-full m-3 sm:m-0 md:w-1/2 p-10 bg-gray-100 text-gray-600 rounded-md items-center">
@@ -123,6 +128,8 @@ export default function BitcoinChart() {
 								pointBackgroundColor: "rgba(255, 255, 255, 1)",
 								fill: "start",
 								tension: 0.4,
+								pointRadius: 1,
+								borderWidth: 3,
 							},
 						]}
 					/>

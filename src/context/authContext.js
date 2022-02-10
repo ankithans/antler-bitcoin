@@ -6,14 +6,21 @@ const Auth = createContext();
 
 const AuthContext = ({ children }) => {
 	useEffect(() => {
+		setLoading(true);
 		onAuthStateChanged(auth, (user) => {
-			if (user) setUser(user);
-			else setUser(null);
+			if (user) {
+				setUser(user);
+				localStorage.setItem("loggedIn", "true");
+			} else {
+				setUser(null);
+				localStorage.setItem("loggedIn", "false");
+			}
 		});
+		setLoading(false);
 	}, []);
 
 	const [user, setUser] = useState(null);
-	const [loading, setLoading] = useState(false);
+	const [loading, setLoading] = useState(true);
 	const [alert, setAlert] = useState({
 		open: false,
 		message: "",
@@ -23,8 +30,8 @@ const AuthContext = ({ children }) => {
 	return (
 		<Auth.Provider
 			value={{
-				user,
 				loading,
+				user,
 				setLoading,
 				alert,
 				setAlert,

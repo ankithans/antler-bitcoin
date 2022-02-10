@@ -4,7 +4,7 @@
 
 ## Tasks
 
-1. Landing Page with a ~Navbar with a signUp / SignIn menu~
+1. ~Landing Page with a Navbar with a signUp / SignIn menu~
 2. ~Google SSO (Along with email / password auth with OTP)~
     - ~Store email in Users collection~
 3. ~Logout session~

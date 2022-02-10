@@ -3,18 +3,22 @@ import { doc, setDoc } from "@firebase/firestore";
 import { useState } from "react";
 import { AuthState } from "../../context/authContext";
 import { auth, db } from "../../firebase";
+import { CircularProgress } from "@mui/material";
 
 export default function SignUpForm({ handleClose, setIsLoginForm }) {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
+	const [loading, setLoading] = useState(false);
 
 	const { setAlert } = AuthState();
 
 	const handleSubmit = async (event) => {
+		setLoading(true);
 		event.preventDefault();
 
 		if (email === "" || password === "" || confirmPassword === "") {
+			setLoading(false);
 			return;
 		}
 		if (password !== confirmPassword) {
@@ -49,7 +53,10 @@ export default function SignUpForm({ handleClose, setIsLoginForm }) {
 				message: `Sign Up Successfull. Welcome ${result.user.email}`,
 				type: "success",
 			});
+			setLoading(false);
 		} catch (error) {
+			setLoading(false);
+
 			setAlert({
 				open: true,
 				message: error.message,
@@ -125,7 +132,11 @@ export default function SignUpForm({ handleClose, setIsLoginForm }) {
 					onClick={handleSubmit}
 					className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center "
 				>
-					Create account
+					{loading ? (
+						<CircularProgress size={20} style={{ color: "#fff" }} />
+					) : (
+						"Create account"
+					)}
 				</button>
 			</form>
 			<div className="pt-5 text-sm font-medium text-gray-500">

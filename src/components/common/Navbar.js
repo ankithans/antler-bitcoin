@@ -36,7 +36,7 @@ export default function Navbar() {
 			<nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-800">
 				<div className="container flex flex-wrap justify-between items-center mx-auto">
 					<button className="flex">
-						<svg
+						{/* <svg
 							className="mr-3 h-10"
 							viewBox="0 0 52 72"
 							fill="none"
@@ -54,13 +54,17 @@ export default function Navbar() {
 								d="M50.877 5H23.9748C11.2182 5 0.876953 15.2975 0.876953 28H27.7791C40.5357 28 50.877 17.7025 50.877 5Z"
 								fill="#1C64F2"
 							></path>
-						</svg>
+						</svg> */}
+						<img
+							className="pr-3 w-16 pb-2"
+							src="https://img.icons8.com/color/80/000000/baratheon-house.png"
+						/>
 						<span className="self-center text-lg font-semibold whitespace-nowrap dark:text-white">
-							Antler
+							Antler Bit
 						</span>
 					</button>
 					<div className="flex md:order-2">
-						{user ? (
+						{localStorage.getItem("loggedIn") == "true" ? (
 							<button
 								type="button"
 								onClick={handleLogout}
